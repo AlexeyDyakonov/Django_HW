@@ -1,0 +1,52 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name_category": "Овощи",
+      "description_category": "Очень полезная еда"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name_category": "Фрукты",
+      "description_category": "Сочный съедобный плод растения."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name_category": "Мясо",
+      "description_category": "Еда животного происхождения"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Морковь",
+      "description": "Оранжевый вытянутый овощь",
+      "image": "products/CarrotRoots.jpg",
+      "category": 1,
+      "price": "20.00",
+      "created_at": "2024-09-17T16:02:47.952Z",
+      "updated_at": "2024-09-17T16:02:47.952Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Банан",
+      "description": "Название съедобных плодов культивируемых растений рода Банан",
+      "image": "products/Банан.jpg",
+      "category": 2,
+      "price": "50.00",
+      "created_at": "2024-09-17T16:05:25.786Z",
+      "updated_at": "2024-09-17T16:05:25.786Z"
+    }
+  }
+]
