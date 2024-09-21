@@ -58,8 +58,8 @@ DATABASES = {
         'NAME': 'hw_django',
         'USER': 'postgres',
         'PASSWORD': '4451',
-        #'HOST': '127.0.0.1',
-        #'PORT': '5432'
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '5432'
     }
 }
 
@@ -92,6 +92,6 @@ STATICFILES_DIRS = (BASE_DIR / 'static',)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = "media/"
+MEDIA_URL = 'media/'
 
-MEDI_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
