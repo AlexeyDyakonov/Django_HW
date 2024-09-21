@@ -5,6 +5,7 @@ from django.db.models import IntegerField
 
 NULLABLE = {"blank": True, "null": True}
 
+
 class Category(models.Model):
     name_category = models.CharField(
         max_length=100, verbose_name="Наименование категории"
@@ -20,18 +21,19 @@ class Category(models.Model):
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
+
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание товара")
     image = models.ImageField(
-        upload_to="products/", verbose_name="Изображение товара", **NULLABLE
+        upload_to="products/photo", verbose_name="Изображение товара", **NULLABLE
     )
     category = models.ForeignKey(
-        to = Category,
+        to=Category,
         on_delete=models.SET_NULL,
         verbose_name="Категория товара",
         **NULLABLE,
-        related_name= "products"
+        related_name="products"
     )
     price = models.DecimalField(
         max_digits=10,
