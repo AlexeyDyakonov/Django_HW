@@ -44,7 +44,7 @@
 <body>
 
 <header>
-    {% include 'includes/inc_menu.html' %}
+    {% include 'catalog/includes/inc_menu.html' %}
 </header>
 
 <main>
@@ -55,8 +55,8 @@
                 <h1 class="fw-light">Магазин</h1>
                 <p class="lead text-muted">Десяточка</p>
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Позвонить</a>
-                    <a href="#" class="btn btn-secondary my-2">Заказать</a>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_create' %}" role="button">Добавить новый продукт</a>
+                    <a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Отзывы</a>
                 </p>
             </div>
         </div>

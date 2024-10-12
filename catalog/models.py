@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 from django.db import models
-from django.db.models import IntegerField
 
 NULLABLE = {"blank": True, "null": True}
 
@@ -44,6 +43,11 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="дата создания")
     updated_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Дата последнего изменения",
+    )
+    view_counter = models.PositiveIntegerField(
+        verbose_name="Счетчик просмотров",
+        help_text="Укажите количество просмотров",
+        default=0
     )
 
     def __str__(self):
