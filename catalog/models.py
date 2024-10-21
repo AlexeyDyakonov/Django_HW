@@ -49,6 +49,10 @@ class Product(models.Model):
         help_text="Укажите количество просмотров",
         default=0
     )
+    is_published = models.BooleanField(
+        default=True,
+        verbose_name='Опубликовано'
+    )
 
     def __str__(self):
         return self.name
@@ -57,3 +61,32 @@ class Product(models.Model):
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
         ordering = ["name"]
+
+
+class Version(models.Model):
+    product = models.ForeignKey(
+        Product,
+        related_name="product",
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="продукт",
+    )
+    version_number = models.CharField(
+        max_length=200, verbose_name="Номер версии", help_text="Введите номер версии"
+    )
+    version_name = models.CharField(
+        max_length=200,
+        verbose_name="Название версии",
+        help_text="Введите название версии",
+    )
+    sign = models.BooleanField(
+        verbose_name="Признак текущей версии"
+    )
+
+    def __str__(self):
+        return self.version_name
+
+    class Meta:
+        verbose_name = "версия"
+        verbose_name_plural = "версии"
+        ordering = ["product", "version_number", "version_name", "sign"]
