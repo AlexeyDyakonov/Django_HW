@@ -13,7 +13,7 @@ class StyleFormMixin:
                 fild.widget.attrs["class"] = "form-control"
 
 
-class ProductForm(ModelForm):
+class ProductForm(StyleFormMixin, ModelForm):
     forbidden_words = [
         "казино",
         "криптовалюта",
