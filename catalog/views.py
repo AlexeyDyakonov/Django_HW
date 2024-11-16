@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -30,16 +31,25 @@ class CatalogDetailView(DetailView):
         self.object.save()
         return self.object
 
-class CatalogCreateView(CreateView):
+class CatalogCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
-    #fields = ("name", "description", "image", "category", "price")
     success_url = reverse_lazy('catalog:product_list')
 
-class CatalogUpdateView(UpdateView):
+    def form_valid(self, form):
+        """
+        Автоматическая привязка пользователя к продукту
+        """
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
+
+
+class CatalogUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
-    #fields = ("name", "description", "image", "category", "price")
     success_url = reverse_lazy('catalog:product_list')
 
     def get_success_url(self):
@@ -65,6 +75,6 @@ class CatalogUpdateView(UpdateView):
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
-class CatalogDeleteView(DeleteView):
+class CatalogDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:product_list')
