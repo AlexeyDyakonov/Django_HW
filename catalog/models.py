@@ -70,6 +70,10 @@ class Product(models.Model):
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
         ordering = ["name"]
+        permissions = [("set_published", "Can publish product"),
+                       ("change_description", "Can change description"),
+                       ("change_category", "Can change category")
+    ]
 
 
 class Version(models.Model):

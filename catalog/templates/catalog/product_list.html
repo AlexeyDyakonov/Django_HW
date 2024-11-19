@@ -18,10 +18,12 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}"
-                                   role="button">О продукте</a>
+                                {% if perms.catalog.set_published and perms.catalog.change_description and perms.catalog.change_category or user == product.owner %}
                                 <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}"
                                    role="button">Редактировать</a>
+                                {%endif%}
+                                <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}"
+                                   role="button">О продукте</a>
                                 <a class="btn btn-primary" href="{% url 'catalog:product_delete' product.pk %}"
                                    role="button">Удалить</a>
                             </div>
